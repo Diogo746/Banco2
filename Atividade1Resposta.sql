@@ -1,0 +1,146 @@
+CREATE SCHEMA	universidade;
+
+USE universidade;
+
+CREATE TABLE  professores(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+departamento VARCHAR(100),
+data_contratacao DATE
+);
+
+ALTER TABLE professores
+ADD salario DECIMAL(10, 2);
+
+ALTER TABLE professores
+DROP COLUMN departamento;
+
+CREATE TABLE disciplinas(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+carga_horaria INT,
+FOREIGN KEY (id_professor) REFERENCES professores(id)
+);
+
+ALTER TABLE disciplinas
+ADD descricao VARCHAR(255);
+
+DROP TABLE disciplinas; 
+
+CREATE TABLE departamento (
+id  INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+bloco VARCHAR(100),
+data_criacao DATE
+);
+
+INSERT INTO departamentos (nome, bloco, data_criacao)
+VALUES
+( 'Engenharia', 'Bloco E', '2005-03-15'),
+( 'Administração', 'Bloco F', '2010-06-20');
+
+ALTER TABLE professores
+ADD salario DECIMAL(10, 2);
+
+ALTER TABLE professores
+ADD bloco VARCHAR (100);
+
+CREATE TABLE  empregados(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+departamento VARCHAR(100),
+data_contratacao DATE,
+salario VARCHAR(50)
+);
+
+INSERT INTO empregados (nome, data_contratacao, salario, departamento)
+VALUES
+( 'Lucas Fernandes',  '2022-09-01', 7500.00,  'Tecnologia da Informação');
+
+CREATE TABLE biblioteca.Livro (
+id INT AUTO_INCREMENT PRIMARY KEY,
+titulo VARCHAR(100),
+data_publicacao YEAR,
+categoria VARCHAR(50),
+ISBN VARCHAR(50),
+editora VARCHAR(100)
+);
+
+INSERT INTO biblioteca.Livro (titulo, data_publicacao, categoria, ISBN, editora)
+VALUES
+('Banco de Dados Avançado', 2021, 'Banco de Dados', '123456789', 'Novatec');
+
+INSERT INTO empregados (nome, data_contratacao, salario, departamento)
+VALUES
+( 'Carlos Júnior'); /////////////
+
+UPDATE empregados
+SET salario = 5500.00
+WHERE nome = 'Carlos Júnior';
+
+CREATE TABLE editora (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+cidade VARCHAR(50)
+);
+
+UPDATE TABLE editora
+SET cidade = 'Brasília'
+WHERE nome = 'Intrinseca';  ////////////
+
+INSERT INTO professores (nome, departamento, data_contratacao, salario) 
+VALUES ('Mariana Barbosa');  //////////
+
+DELETE FROM professores
+WHERE nome = 'Mariana Barbosa';
+
+DELETE FROM biblioteca
+WHERE data_publicacao < '2015-01-01';
+
+SELECT * FROM professores
+ORDER BY salario DESC;
+
+SELECT * FROM professores
+WHERE salario > 5000.00
+AND data_contratacao < '2020-01-01';
+
+SELECT departamento, COUNT(*) AS quantidade_empregados
+FROM professores
+GROUP BY departamento;
+
+SELECT departamento, SUM(salario) AS total_salarios
+FROM professores
+GROUP BY departamento;
+
+SELECT MAX(salario) AS maior_salario
+FROM professores;
+
+SELECT Livro.titulo, Editora.nome AS editora
+FROM Livro
+JOIN Editora ON Livro.editora_id = Editora.id;
+
+CREATE TABLE Livros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(100) 
+);
+
+CREATE TABLE Emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_aluno INT,
+    id_livro INT,
+    data_devolucao DATE,
+    FOREIGN KEY (id_aluno) REFERENCES Alunos(id),
+    FOREIGN KEY (id_livro) REFERENCES Livros(id)
+);
+
+SELECT Alunos.nome AS aluno, Livros.titulo AS livro, Emprestimos.data_devolucao
+FROM Emprestimos
+JOIN Alunos ON Emprestimos.id_aluno = Alunos.id
+JOIN Livros ON Emprestimos.id_livro = Livros.id;
+
+
+
+
+
+
+

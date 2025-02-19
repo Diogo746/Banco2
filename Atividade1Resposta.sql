@@ -63,7 +63,7 @@ titulo VARCHAR(100),
 data_publicacao YEAR,
 categoria VARCHAR(50),
 ISBN VARCHAR(50),
-editora VARCHAR(100)
+FOREIGN KEY (id_editor) REFERENCES editora(id)
 );
 
 INSERT INTO biblioteca.Livro (titulo, data_publicacao, categoria, ISBN, editora)
@@ -72,7 +72,7 @@ VALUES
 
 INSERT INTO empregados (nome, data_contratacao, salario, departamento)
 VALUES
-( 'Carlos Júnior'); /////////////
+( 'Carlos Júnior', '2023-08-11', 4000.00, 'Tecnologia da Informação');
 
 UPDATE empregados
 SET salario = 5500.00
@@ -84,12 +84,13 @@ nome VARCHAR(100),
 cidade VARCHAR(50)
 );
 
+
 UPDATE TABLE editora
 SET cidade = 'Brasília'
 WHERE nome = 'Intrinseca';  ////////////
 
 INSERT INTO professores (nome, departamento, data_contratacao, salario) 
-VALUES ('Mariana Barbosa');  //////////
+VALUES ('Mariana Barbosa'); ////////
 
 DELETE FROM professores
 WHERE nome = 'Mariana Barbosa';
@@ -138,6 +139,23 @@ FROM Emprestimos
 JOIN Alunos ON Emprestimos.id_aluno = Alunos.id
 JOIN Livros ON Emprestimos.id_livro = Livros.id;
 
+
+SELECT Livros.titulo AS livro, Alunos.nome AS aluno
+FROM Emprestimos
+JOIN Alunos ON Emprestimos.id_aluno = Alunos.id
+JOIN Livros ON Emprestimos.id_livro = Livros.id;
+
+SELECT departamento, AVG(salario) AS media_salarial
+FROM professores
+GROUP BY departamento;
+
+
+
+SELECT DISTINCT Autores.nome AS autor
+FROM Livros
+JOIN Autores ON Livros.id_autor = Autores.id
+JOIN Editora ON Livros.editora_id = Editora.id
+WHERE Editora.nome = 'Novatec';
 
 
 

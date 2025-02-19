@@ -1,0 +1,61 @@
+Questões para um exercício prático usando MySQL Workbench, abordando DDL (Data Definition Language) e DML (Data Manipulation Language)
+
+
+
+
+Parte 1: DDL (Data Definition Language)
+1. Criação e Modificação de Estruturas
+	1. Crie um banco de dados chamado 'universidade' e selecione-o para uso.
+	2. No banco de dados 'universidade', crie uma tabela chamada 'professores' com os seguintes campos:
+	   - 'id' (chave primária, auto_increment, inteiro)
+	   - 'nome' (varchar de 100 caracteres, não pode ser nulo)
+	   - 'departamento' (varchar de 100 caracteres)
+	   - 'data_contratacao' (do tipo DATE)
+	3. Modifique a tabela 'professores' para adicionar um campo 'salario' (decimal com 10 dígitos e 2 casas decimais).
+	4. Remova a coluna 'departamento' da tabela 'professores'.
+	5. Crie uma nova tabela chamada 'disciplinas' com os seguintes campos:
+	   - 'id' (chave primária, auto_increment, inteiro)
+	   - 'nome' (varchar de 100 caracteres)
+	   - 'carga_horaria' (inteiro)
+	   - 'id_professor' (chave estrangeira referenciando 'professores(id)')
+	6. Altere a tabela 'disciplinas' para adicionar uma coluna 'descricao' (varchar de 255 caracteres).
+	7. Exclua a tabela 'disciplinas'.
+
+
+
+
+
+
+Parte 2: DML (Data Manipulation Language)
+
+
+2. Inserção de Dados
+	1. Insira os seguintes departamentos na tabela 'departamentos':
+	   - Nome: "Engenharia", Bloco: "Bloco E", Data de criação: "2005-03-15"
+	   - Nome: "Administração", Bloco: "Bloco F", Data de criação: "2010-06-20"
+	2. Adicione um novo empregado chamado "Lucas Fernandes", admitido em 2022-09-01, com um salário de 7500.00, e que pertence ao departamento de Tecnologia da Informação.
+	3. Na tabela 'biblioteca.Livro', adicione um novo livro chamado "Banco de Dados Avançado", publicado em 2021, da categoria Banco de Dados, ISBN 123456789, e publicado pela editora Novatec.
+
+
+3. Atualização e Exclusão de Dados
+	1. Atualize o salário do empregado "Carlos Júnior" para 5500.00.
+	2. Atualize a cidade da editora "Intrinseca" para "Brasília".
+	3. Remova o empregado cujo nome seja "Mariana Barbosa".
+	4. Remova todos os livros da tabela 'biblioteca.Livro' que foram publicados antes de 2015.
+
+
+
+
+4. Consultas (SELECT, WHERE, ORDER BY, GROUP BY, JOIN)
+	1. Liste todos os empregados ordenados por salário de forma decrescente.
+	2. Recupere todos os empregados cujo salário seja maior que 5000.00 e que tenham sido admitidos antes de 2020.
+	3. Liste todos os departamentos e a quantidade de empregados em cada um (use 'GROUP BY').
+	4. Exiba os nomes dos departamentos e o total de salários pagos por cada um.
+	5. Encontre o maior salário entre os empregados.
+	6. Liste todos os livros e suas respectivas editoras (use 'JOIN' entre 'Livro' e 'Editora').
+	7. Liste todos os alunos que pegaram livros emprestados e a data de devolução desses empréstimos.
+	8. Liste os livros emprestados e o nome dos alunos que pegaram esses livros.
+	9. Exiba a média salarial dos empregados por departamento.
+	10. Encontre os nomes dos autores que escreveram livros publicados pela editora Novatec.
+
+

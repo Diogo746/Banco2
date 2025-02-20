@@ -57,14 +57,25 @@ INSERT INTO empregados (nome, data_contratacao, salario, departamento)
 VALUES
 ( 'Lucas Fernandes',  '2022-09-01', 7500.00,  'Tecnologia da Informação');
 
+CREATE TABLE editora (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(100),
+cidade VARCHAR(50)
+);
+
 CREATE TABLE biblioteca.livro (
 id INT AUTO_INCREMENT PRIMARY KEY,
 titulo VARCHAR(100),
 data_publicacao YEAR,
 categoria VARCHAR(50),
 ISBN VARCHAR(50),
+id_editora INT,
 FOREIGN KEY (id_editora) REFERENCES editora(id)
 );
+
+INSERT INTO editora (nome, cidade)
+VALUES
+('Novatec', 'Recife');
 
 INSERT INTO biblioteca.livro (titulo, data_publicacao, categoria, ISBN, editora)
 VALUES
@@ -78,16 +89,13 @@ UPDATE empregados
 SET salario = 5500.00
 WHERE nome = 'Carlos Júnior';
 
-CREATE TABLE editora (
-id INT AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(100),
-cidade VARCHAR(50)
-);
-
+INSERT INTO editora (nome, cidade)
+VALUES
+('Intrinseca', 'Recife');
 
 UPDATE editora
 SET cidade = 'Brasília'
-WHERE nome = 'Intrinseca'; 
+WHERE nome = 'Intrinseca';
 
 INSERT INTO professores (nome, departamento, data_contratacao, salario) 
 VALUES ('Mariana Barbosa', 'Tecnologia da Informação', '2023-03-22', 4500.00);

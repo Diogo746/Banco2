@@ -34,7 +34,7 @@ bloco VARCHAR(100),
 data_criacao DATE
 );
 
-INSERT INTO departamentos (nome, bloco, data_criacao)
+INSERT INTO departamento (nome, bloco, data_criacao)
 VALUES
 ( 'Engenharia', 'Bloco E', '2005-03-15'),
 ( 'Administração', 'Bloco F', '2010-06-20');
@@ -50,7 +50,7 @@ id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(100),
 departamento VARCHAR(100),
 data_contratacao DATE,
-salario VARCHAR(50)
+salario DECIMAL(10, 2)
 );
 
 INSERT INTO empregados (nome, data_contratacao, salario, departamento)
@@ -78,7 +78,7 @@ UPDATE empregados
 SET salario = 5500.00
 WHERE nome = 'Carlos Júnior';
 
-CREATE TABLE editora (
+CREATE editora (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(100),
 cidade VARCHAR(50)
@@ -90,12 +90,12 @@ SET cidade = 'Brasília'
 WHERE nome = 'Intrinseca';  ////////////
 
 INSERT INTO professores (nome, departamento, data_contratacao, salario) 
-VALUES ('Mariana Barbosa'); ////////
+VALUES ('Mariana Barbosa', 'Tecnologia da Informação', 2023-03-22, 4500.00);
 
 DELETE FROM professores
 WHERE nome = 'Mariana Barbosa';
 
-DELETE FROM biblioteca
+DELETE FROM biblioteca.Livro
 WHERE data_publicacao < '2015-01-01';
 
 SELECT * FROM professores

@@ -135,32 +135,35 @@ CREATE TABLE Emprestimos (
     id_aluno INT,
     id_livro INT,
     data_devolucao DATE,
-    FOREIGN KEY (id_aluno) REFERENCES Alunos(id),
-    FOREIGN KEY (id_livro) REFERENCES Livros(id)
+    FOREIGN KEY (id_aluno) REFERENCES alunos(id),
+    FOREIGN KEY (id_livro) REFERENCES livros(id)
 );
 
 SELECT Alunos.nome AS aluno, Livros.titulo AS livro, Emprestimos.data_devolucao
 FROM Emprestimos
-JOIN Alunos ON Emprestimos.id_aluno = Alunos.id
-JOIN Livros ON Emprestimos.id_livro = Livros.id;
+JOIN Alunos ON Emprestimos.id_aluno = alunos.id
+JOIN Livros ON Emprestimos.id_livro = livros.id;
 
 
-SELECT Livros.titulo AS livro, Alunos.nome AS aluno
-FROM Emprestimos
-JOIN Alunos ON Emprestimos.id_aluno = Alunos.id
-JOIN Livros ON Emprestimos.id_livro = Livros.id;
+SELECT livros.titulo AS livro, alunos.nome AS aluno
+FROM emprestimos
+JOIN alunos ON emprestimos.id_aluno = Alunos.id
+JOIN livros ON emprestimos.id_livro = Livros.id;
 
 SELECT departamento, AVG(salario) AS media_salarial
 FROM professores
 GROUP BY departamento;
 
+CREATE TABLE autores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100)
+);
 
-
-SELECT DISTINCT Autores.nome AS autor
-FROM Livros
-JOIN Autores ON Livros.id_autor = Autores.id
-JOIN Editora ON Livros.editora_id = Editora.id
-WHERE Editora.nome = 'Novatec';
+SELECT DISTINCT autores.nome AS autor
+FROM livros
+JOIN autores ON livros.id_autor = autores.id
+JOIN editora ON livros.editora_id = editora.id
+WHERE editora.nome = 'Novatec';
 
 
 

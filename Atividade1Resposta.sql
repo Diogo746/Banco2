@@ -57,7 +57,7 @@ INSERT INTO empregados (nome, data_contratacao, salario, departamento)
 VALUES
 ( 'Lucas Fernandes',  '2022-09-01', 7500.00,  'Tecnologia da Informação');
 
-CREATE TABLE biblioteca.Livro (
+CREATE TABLE biblioteca.livro (
 id INT AUTO_INCREMENT PRIMARY KEY,
 titulo VARCHAR(100),
 data_publicacao YEAR,
@@ -95,7 +95,7 @@ VALUES ('Mariana Barbosa', 'Tecnologia da Informação', '2023-03-22', 4500.00);
 DELETE FROM professores
 WHERE nome = 'Mariana Barbosa';
 
-DELETE FROM biblioteca.Livro
+DELETE FROM biblioteca.livro
 WHERE data_publicacao < '2015-01-01';
 
 SELECT * FROM professores
@@ -116,11 +116,11 @@ GROUP BY departamento;
 SELECT MAX(salario) AS maior_salario
 FROM professores;
 
-SELECT Livro.titulo, Editora.nome AS editora
-FROM Livro
-JOIN Editora ON Livro.editora_id = Editora.id;
+SELECT livro.titulo, editora.nome AS editora
+FROM livro
+JOIN editora ON livro.editora_id = editora.id;
 
-CREATE TABLE Livros (
+CREATE TABLE livros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) 
 );
@@ -147,8 +147,8 @@ JOIN Livros ON Emprestimos.id_livro = livros.id;
 
 SELECT livros.titulo AS livro, alunos.nome AS aluno
 FROM emprestimos
-JOIN alunos ON emprestimos.id_aluno = Alunos.id
-JOIN livros ON emprestimos.id_livro = Livros.id;
+JOIN alunos ON emprestimos.id_aluno = alunos.id
+JOIN livros ON emprestimos.id_livro = livros.id;
 
 SELECT departamento, AVG(salario) AS media_salarial
 FROM professores

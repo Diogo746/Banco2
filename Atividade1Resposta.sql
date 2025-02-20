@@ -63,7 +63,7 @@ titulo VARCHAR(100),
 data_publicacao YEAR,
 categoria VARCHAR(50),
 ISBN VARCHAR(50),
-FOREIGN KEY (id_editor) REFERENCES editora(id)
+FOREIGN KEY (id_editora) REFERENCES editora(id)
 );
 
 INSERT INTO biblioteca.Livro (titulo, data_publicacao, categoria, ISBN, editora)
@@ -90,7 +90,7 @@ SET cidade = 'Brasília'
 WHERE nome = 'Intrinseca'; 
 
 INSERT INTO professores (nome, departamento, data_contratacao, salario) 
-VALUES ('Mariana Barbosa', 'Tecnologia da Informação', 2023-03-22, 4500.00);
+VALUES ('Mariana Barbosa', 'Tecnologia da Informação', '2023-03-22', 4500.00);
 
 DELETE FROM professores
 WHERE nome = 'Mariana Barbosa';
@@ -123,6 +123,11 @@ JOIN Editora ON Livro.editora_id = Editora.id;
 CREATE TABLE Livros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(100) 
+);
+
+CREATE TABLE alunos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100)
 );
 
 CREATE TABLE Emprestimos (

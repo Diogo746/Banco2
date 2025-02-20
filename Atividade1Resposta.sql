@@ -130,7 +130,7 @@ CREATE TABLE alunos (
     nome VARCHAR(100)
 );
 
-CREATE TABLE Emprestimos (
+CREATE TABLE emprestimos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_aluno INT,
     id_livro INT,
@@ -139,7 +139,7 @@ CREATE TABLE Emprestimos (
     FOREIGN KEY (id_livro) REFERENCES livros(id)
 );
 
-SELECT Alunos.nome AS aluno, Livros.titulo AS livro, Emprestimos.data_devolucao
+SELECT alunos.nome AS aluno, livros.titulo AS livro, emprestimos.data_devolucao
 FROM Emprestimos
 JOIN Alunos ON Emprestimos.id_aluno = alunos.id
 JOIN Livros ON Emprestimos.id_livro = livros.id;

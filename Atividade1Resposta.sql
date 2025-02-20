@@ -66,7 +66,7 @@ ISBN VARCHAR(50),
 FOREIGN KEY (id_editora) REFERENCES editora(id)
 );
 
-INSERT INTO biblioteca.Livro (titulo, data_publicacao, categoria, ISBN, editora)
+INSERT INTO biblioteca.livro (titulo, data_publicacao, categoria, ISBN, editora)
 VALUES
 ('Banco de Dados Avançado', 2021, 'Banco de Dados', '123456789', 'Novatec');
 

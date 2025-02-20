@@ -78,14 +78,14 @@ UPDATE empregados
 SET salario = 5500.00
 WHERE nome = 'Carlos Júnior';
 
-CREATE editora (
+CREATE TABLE editora (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(100),
 cidade VARCHAR(50)
 );
 
 
-UPDATE TABLE editora
+UPDATE editora
 SET cidade = 'Brasília'
 WHERE nome = 'Intrinseca'; 
 

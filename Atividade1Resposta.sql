@@ -87,7 +87,7 @@ cidade VARCHAR(50)
 
 UPDATE TABLE editora
 SET cidade = 'Brasília'
-WHERE nome = 'Intrinseca';  ////////////
+WHERE nome = 'Intrinseca'; 
 
 INSERT INTO professores (nome, departamento, data_contratacao, salario) 
 VALUES ('Mariana Barbosa', 'Tecnologia da Informação', 2023-03-22, 4500.00);
